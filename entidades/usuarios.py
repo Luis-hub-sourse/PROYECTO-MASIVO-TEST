@@ -1,7 +1,5 @@
-class Usarios:
-    def __init__(self, nombre, contraseña):
-        self.nombre = nombre
+class Usuarios:
+    def __init__(self, correo_electronico, contraseña, rol):
+        self.correo_electronico = correo_electronico
         self.contraseña = contraseña
-
-    def saludar(self):
-        return f"{self.nombre}, {self.contraseña}"
+        self.rol = rol
