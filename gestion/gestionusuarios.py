@@ -7,7 +7,7 @@ class Verificacion:
         self.contrasena = contrasena
 
     def verificar_tamaño(self):
-        if self.usuario and self.contrasena is None:
+        if not self.usuario and not self.contrasena:
             return False
         elif re.fullmatch(r'.{3,10}', self.usuario) and re.fullmatch(r'.{8,12}', self.contrasena):
             return True

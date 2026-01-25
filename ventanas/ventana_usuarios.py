@@ -21,12 +21,6 @@ class VentanaUsuarios(QtWidgets.QDialog):
 
         self.listar_usuarios()
 
-    def mostrar_acercade(self):
-        QtWidgets.QMessageBox.information(self, "Acerca de", "Aplicación de Gestión de Usuarios\nDesarrollada por Luis")
-    
-    def sobre_usuarios(self):
-        QtWidgets.QMessageBox.information(self, "Sobre Usuarios", "En este sistema puedes gestionar los usuarios.\nPuedes agregar, eliminar o modificar usuarios existentes.")
-
     # Menu desplegable al hacer click derecho en una de las filas de la tabla
     def menu_contextual(self, pos):
         try:
@@ -94,6 +88,8 @@ class VentanaUsuarios(QtWidgets.QDialog):
 
             self.LineNombre.setText(self.nombre_actual)
             self.LineContrasena.setText(self.contraseña_actual)
+            self.LineNombre.setFocus()
+            self.LineNombre.returnPressed.connect(self.LineContrasena.setFocus)
         except Exception as ex:
             self.mensaje_aviso_error(f"Error al seleccionar el usuario: {ex}")
     

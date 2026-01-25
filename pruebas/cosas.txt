@@ -5,3 +5,8 @@ self.LineNombre.hide()
 self.LineContrasena.hide()
 self.btnMas.hide()
 self.btnCancelar.hide()
+
+
+
+Menu con click derecho:
+CustomContextMenu
