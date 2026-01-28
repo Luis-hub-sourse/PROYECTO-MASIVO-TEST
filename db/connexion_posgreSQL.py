@@ -30,6 +30,7 @@ class ConexionDB:
             cursor = self.connection.cursor()
             cursor.execute(consulta, dato)
             muestra = cursor.fetchall()
+            print(muestra)
             self.connection.commit()
             return muestra
         except Exception as ex:
@@ -111,7 +112,7 @@ class ConexionDB:
         # Crear tabla de alumno_materia
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS public.alumno_materia(
+            CREATE TABLE IF NOT EXISTS public.alumno_materias(
                 alumno integer NOT NULL,
                 materia uuid NOT NULL,
                 "año_cursada" integer NOT NULL,
@@ -136,7 +137,7 @@ class ConexionDB:
         # Crear tabla de carrera
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS public.carrera(
+            CREATE TABLE IF NOT EXISTS public.carreras(
                 id_carrera uuid NOT NULL DEFAULT gen_random_uuid(),
                 nombre character varying(100) NOT NULL,
 
@@ -148,7 +149,7 @@ class ConexionDB:
         # Crear tabla de jornada_materia
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS public.jornada_materia(
+            CREATE TABLE IF NOT EXISTS public.jornada_materias(
                 materia uuid NOT NULL,
                 dia_semana integer NOT NULL,
                 hora_inicial time without time zone NOT NULL,

@@ -1,4 +1,5 @@
 from repositorio.repositorio_materia import RepositorioMateria
+from repositorio.repositorio_carrera import RepositorioCarrera
 from entidades.materias import Materia
 
 
@@ -20,7 +21,11 @@ class ServicioMateria:
         if not self._validar_anio(anio):
             return False, "El año debe ser un número válido entre 1 y 10"
         
-        materia = Materia(nombre, carrera, anio)
+        id_carrera = RepositorioCarrera().obtener_id_carrera(carrera)
+        if id_carrera is None:
+            return False, "La carrera no existe."
+
+        materia = Materia(nombre, id_carrera, anio)
         exito, mensaje = self.repositorio.agregar_materia(materia)
         
         if exito:
@@ -36,7 +41,11 @@ class ServicioMateria:
         if not self._validar_anio(anio):
             return False, "El año debe ser un número válido entre 1 y 10"
         
-        materia = Materia(nombre, carrera, anio)
+        id_carrera = RepositorioCarrera().obtener_id_carrera(carrera)
+        if id_carrera is None:
+            return False, "La carrera no existe."
+
+        materia = Materia(nombre, id_carrera, anio)
         exito, mensaje = self.repositorio.actualizar_materia(nombre_original, materia)
         
         if exito:
@@ -54,7 +63,7 @@ class ServicioMateria:
             return True, resultado[1]
         else:
             return False, resultado[1]
-    
+
     def _validar_datos(self, nombre: str, carrera: str, anio: str) -> bool:
         return all([nombre and nombre.strip(), carrera and carrera.strip(), anio and anio.strip()])
     

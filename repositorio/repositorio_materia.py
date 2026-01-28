@@ -8,7 +8,7 @@ class RepositorioMateria:
     def listar_materias(self):
         conexion = self.db.connect_to_db()
         cursor = conexion.cursor()
-        cursor.execute("SELECT * FROM materias ORDER BY nombre")
+        cursor.execute("SELECT m.nombre AS nombre_materia, c.nombre AS nombre_carrera, m.año_cursada FROM public.materias m JOIN public.carreras c ON m.carrera_pertenece = c.id_carrera;")
         materias = cursor.fetchall()
         cursor.close()
         conexion.close()
@@ -28,9 +28,9 @@ class RepositorioMateria:
             conexion = self.db.connect_to_db()
             cursor = conexion.cursor()
             cursor.execute("""
-                INSERT INTO materias (nombre, carrera, anio)
+                INSERT INTO materias (nombre, año_cursada, carrera_pertenece)
                 VALUES (%s, %s, %s)
-            """, (materia.nombre, materia.carrera, materia.anio))
+            """, (materia.nombre, materia.anio, materia.id_carrera))
             conexion.commit()
             cursor.close()
             conexion.close()
@@ -56,9 +56,9 @@ class RepositorioMateria:
             cursor = conexion.cursor()
             cursor.execute("""
                 UPDATE materias 
-                SET nombre = %s, carrera = %s, anio = %s
+                SET nombre = %s, carrera_pertenece = %s, año_cursada = %s
                 WHERE nombre = %s
-            """, (materia.nombre, materia.carrera, materia.anio, nombre_original))
+            """, (materia.nombre, materia.id_carrera, materia.anio, nombre_original))
             conexion.commit()
             actualizadas = cursor.rowcount
             cursor.close()
