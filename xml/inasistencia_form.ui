@@ -22,6 +22,11 @@
      <height>321</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="placeholderText">
     <string>Asunto</string>
    </property>
@@ -40,6 +45,9 @@
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>590</x>
@@ -53,7 +61,7 @@
    </property>
    <widget class="QLineEdit" name="liedDNI">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -69,7 +77,7 @@
    </widget>
    <widget class="QComboBox" name="cbPersona">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -110,7 +118,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>50</y>
       <width>261</width>
       <height>28</height>
      </rect>
@@ -123,7 +131,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>110</y>
       <width>181</width>
       <height>28</height>
      </rect>
@@ -163,17 +171,17 @@
     </property>
     <property name="dateTime">
      <datetime>
-      <hour>6</hour>
+      <hour>15</hour>
       <minute>0</minute>
       <second>0</second>
-      <year>2000</year>
+      <year>2026</year>
       <month>1</month>
       <day>1</day>
      </datetime>
     </property>
     <property name="maximumDateTime">
      <datetime>
-      <hour>6</hour>
+      <hour>15</hour>
       <minute>0</minute>
       <second>0</second>
       <year>2026</year>
@@ -183,7 +191,7 @@
     </property>
     <property name="minimumDateTime">
      <datetime>
-      <hour>6</hour>
+      <hour>15</hour>
       <minute>0</minute>
       <second>0</second>
       <year>2000</year>
@@ -193,6 +201,13 @@
     </property>
     <property name="calendarPopup">
      <bool>true</bool>
+    </property>
+    <property name="date">
+     <date>
+      <year>2026</year>
+      <month>1</month>
+      <day>1</day>
+     </date>
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox">
@@ -226,7 +241,7 @@
      <string>Desde</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_2">
+   <widget class="QCheckBox" name="chboxMasDias">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -239,7 +254,7 @@
      <string>Más días</string>
     </property>
    </widget>
-   <widget class="QDateEdit" name="deFecha_2">
+   <widget class="QDateEdit" name="deFechaFinalizacion">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -253,17 +268,17 @@
     </property>
     <property name="dateTime">
      <datetime>
-      <hour>9</hour>
+      <hour>18</hour>
       <minute>0</minute>
       <second>0</second>
-      <year>2000</year>
+      <year>2026</year>
       <month>1</month>
       <day>1</day>
      </datetime>
     </property>
     <property name="maximumDateTime">
      <datetime>
-      <hour>9</hour>
+      <hour>18</hour>
       <minute>0</minute>
       <second>0</second>
       <year>2026</year>
@@ -273,7 +288,7 @@
     </property>
     <property name="minimumDateTime">
      <datetime>
-      <hour>9</hour>
+      <hour>18</hour>
       <minute>0</minute>
       <second>0</second>
       <year>2000</year>
@@ -283,6 +298,13 @@
     </property>
     <property name="calendarPopup">
      <bool>true</bool>
+    </property>
+    <property name="date">
+     <date>
+      <year>2026</year>
+      <month>1</month>
+      <day>1</day>
+     </date>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -304,6 +326,32 @@
     </property>
     <property name="text">
      <string>Hasta</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Materia</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Motivo</string>
     </property>
    </widget>
   </widget>

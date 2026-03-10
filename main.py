@@ -5,6 +5,7 @@ from servicios.servicio_materia import ServicioMateria
 from ventanas.ventana_alumnos import VentanaAlumnos
 from ventanas.ventana_profesores import VentanaProfesores
 from ventanas.ventana_usuarios import VentanaUsuarios
+from ventanas.ventana_inasistencia import VentanaRegsitroInasistencia
 
 class VentanaPrincipal(QtWidgets.QMainWindow):
     def __init__(self):
@@ -17,6 +18,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.actionUsuarios.triggered.connect(self.abrir_usuarios)
         self.actionAcercade.triggered.connect(self.mostrar_acercade)
         self.actionUsuarios_2.triggered.connect(self.sobre_usuarios)
+        self.actionInasistencias.triggered.connect(self.abrir_inasistencias)
     
     def abrir_profesores(self):
         self.ventana_profesores = VentanaProfesores(self)
@@ -33,6 +35,10 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
     def abrir_usuarios(self):
         self.ventana_usuarios = VentanaUsuarios()
         self.ventana_usuarios.show()
+
+    def abrir_inasistencias(self):
+        self.ventana_inasistencias = VentanaRegsitroInasistencia(self)
+        self.ventana_inasistencias.show()
 
     def mostrar_acercade(self):
         QtWidgets.QMessageBox.information(self, "Acerca de", "Aplicación de Gestión de Asistencias para alumnos y profesores.\nDesarrollada por los alumnos de 2do año del ITES.")
