@@ -1,4 +1,4 @@
-from entidades.usuarios import Usarios
+from entidades.usuarios import Usuarios
 from repositorio.usuariorepositorio import UsuarioRepositorio
 from gestion.gestionusuarios import Verificacion
 
@@ -17,7 +17,7 @@ class UsuarioServicio:
         if not self.verificar_datos(nombre, contraseña):
             return False
         else:
-            usuario = Usarios(nombre, contraseña)
+            usuario = Usuarios(nombre, contraseña)
             return self.repositorio.agregar_usuario(usuario)
 
     def eliminar_usuario(self, nombre, contraseña):
