@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>474</height>
+    <width>1039</width>
+    <height>539</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -43,17 +43,32 @@
          </property>
          <column>
           <property name="text">
+           <string>DNI</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
            <string>Nombre</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Carrera</string>
+           <string>Apellido</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Año</string>
+           <string>Correo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Telefono</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Ciudad</string>
           </property>
          </column>
         </widget>
@@ -122,18 +137,42 @@
          </property>
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="labelDni">
             <property name="font">
              <font>
               <pointsize>10</pointsize>
              </font>
             </property>
             <property name="text">
-             <string>Nombre:</string>
+             <string>Dni</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
+           <widget class="QLineEdit" name="txtDni">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="placeholderText">
+             <string>Ingrese el dni</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelNombre">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nombre</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
            <widget class="QLineEdit" name="txtNombre">
             <property name="font">
              <font>
@@ -141,55 +180,88 @@
              </font>
             </property>
             <property name="placeholderText">
-             <string>Ingrese el nombre completo</string>
+             <string>Ingrese el nombre</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_3">
+          <item row="5" column="0">
+           <widget class="QLabel" name="labelCiudad">
             <property name="font">
              <font>
               <pointsize>10</pointsize>
              </font>
             </property>
             <property name="text">
-             <string>Carrera:</string>
+             <string>Ciudad</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="txtCarrera">
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="txtCiudad">
             <property name="font">
              <font>
               <pointsize>10</pointsize>
              </font>
             </property>
             <property name="placeholderText">
-             <string>Ingrese la carrera</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Año:</string>
+             <string>Ingrese la ciudad</string>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="txtAnio">
+           <widget class="QLineEdit" name="txtApellido">
+            <property name="placeholderText">
+             <string>Ingrese el apellido</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelApellido">
             <property name="font">
              <font>
               <pointsize>10</pointsize>
              </font>
             </property>
+            <property name="text">
+             <string>Apellido</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="txtCorreo">
             <property name="placeholderText">
-             <string>Ingrese el año (1-10)</string>
+             <string>Ingrese el correo</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelCorreo">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Correo</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="txtTelefono">
+            <property name="placeholderText">
+             <string>Ingrese el número de teléfono</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelTelefono">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Telefono</string>
             </property>
            </widget>
           </item>
@@ -259,4 +331,3 @@
  <resources/>
  <connections/>
 </ui>
-

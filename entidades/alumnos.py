@@ -1,5 +1,5 @@
 class Alumno:
-    def __init__(self, dni, nombre, ciudad, correo_electronico, apellido, telefono):
+    def __init__(self, dni, nombre, apellido, correo_electronico, telefono, ciudad):
         self.dni = dni
         self.nombre = nombre
         self.ciudad = ciudad

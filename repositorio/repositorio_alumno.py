@@ -28,9 +28,9 @@ class RepositorioAlumno:
             conexion = self.db.connect_to_db()
             cursor = conexion.cursor()
             cursor.execute("""
-                INSERT INTO alumnos (nombre, carrera, anio)
-                VALUES (%s, %s, %s)
-            """, (alumno.nombre, alumno.carrera, alumno.anio))
+                INSERT INTO alumnos (dni, nombre, ciudad, correo_electronico, apellido, telefono)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (alumno.dni, alumno.nombre, alumno.ciudad, alumno.correo_electronico, alumno.apellido, alumno.telefono))
             conexion.commit()
             cursor.close()
             conexion.close()
@@ -50,15 +50,15 @@ class RepositorioAlumno:
                 conexion.close()
             return False, f"Error de base de datos: {str(e)}"
     
-    def actualizar_alumno(self, nombre_original, alumno):
+    def actualizar_alumno(self, dni_registrado, alumno):
         try:
             conexion = self.db.connect_to_db()
             cursor = conexion.cursor()
             cursor.execute("""
                 UPDATE alumnos 
-                SET nombre = %s, carrera = %s, anio = %s
-                WHERE nombre = %s
-            """, (alumno.nombre, alumno.carrera, alumno.anio, nombre_original))
+                SET dni = %s, nombre = %s, ciudad = %s, correo_electronico = %s, apellido = %s, telefono = %s
+                WHERE dni = %s
+            """, (alumno.dni, alumno.nombre, alumno.ciudad, alumno.correo_electronico, alumno.apellido, alumno.telefono, dni_registrado))
             conexion.commit()
             actualizadas = cursor.rowcount
             cursor.close()
@@ -77,11 +77,11 @@ class RepositorioAlumno:
                 conexion.close()
             return False, f"Error al actualizar alumno: {str(e)}"
     
-    def eliminar_alumno(self, nombre):
+    def eliminar_alumno(self, dni):
         try:
             conexion = self.db.connect_to_db()
             cursor = conexion.cursor()
-            cursor.execute("DELETE FROM alumnos WHERE nombre = %s", (nombre,))
+            cursor.execute("DELETE FROM alumnos WHERE dni = %s", (dni,))
             conexion.commit()
             eliminadas = cursor.rowcount
             cursor.close()

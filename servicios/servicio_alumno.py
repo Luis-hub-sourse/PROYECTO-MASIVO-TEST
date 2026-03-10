@@ -11,15 +11,15 @@ class ServicioAlumno:
     def buscar_alumno(self, nombre: str):
         return self.repositorio.buscar_alumno(nombre)
     
-    def agregar_alumno(self, nombre: str, carrera: str, anio: str):
+    def agregar_alumno(self, dni, nombre, apellido, correo, telefono, ciudad):
         # Validar datos
-        if not self._validar_datos(nombre, carrera, anio):
+        if not self._validar_datos(dni, nombre, apellido, correo, telefono, ciudad):
             return False, "Todos los campos son obligatorios"
         
-        if not self._validar_anio(anio):
-            return False, "El año debe ser un número válido"
+        if not self._validar_anio(dni):
+            return False, "El dni debe ser un número válido"
         
-        alumno = Alumno(nombre, carrera, anio)
+        alumno = Alumno(dni, nombre, apellido, correo, telefono, ciudad)
         exito, mensaje = self.repositorio.agregar_alumno(alumno)
         
         if exito:
@@ -27,40 +27,40 @@ class ServicioAlumno:
         else:
             return False, mensaje
     
-    def actualizar_alumno(self, nombre_original: str, nombre: str, carrera: str, anio: str):
+    def actualizar_alumno(self, dni_registrado, dni, nombre, apellido, correo, telefono, ciudad):
         # Validar datos
-        if not self._validar_datos(nombre, carrera, anio):
+        if not self._validar_datos(dni, nombre, apellido, correo, telefono, ciudad):
             return False, "Todos los campos son obligatorios"
         
-        if not self._validar_anio(anio):
-            return False, "El año debe ser un número válido"
+        if not self._validar_anio(dni):
+            return False, "El dni debe ser un número válido"
         
-        alumno = Alumno(nombre, carrera, anio)
-        exito, mensaje = self.repositorio.actualizar_alumno(nombre_original, alumno)
+        alumno = Alumno(dni, nombre, apellido, correo, telefono, ciudad)
+        exito, mensaje = self.repositorio.actualizar_alumno(dni_registrado, alumno)
         
         if exito:
             return True, mensaje
         else:
             return False, mensaje
     
-    def eliminar_alumno(self, nombre: str):
-        if not nombre or not nombre.strip():
-            return False, "El nombre es obligatorio"
+    def eliminar_alumno(self, dni: str):
+        if not dni or not dni.strip():
+            return False, "El dni es obligatorio"
         
-        resultado = self.repositorio.eliminar_alumno(nombre)
+        resultado = self.repositorio.eliminar_alumno(dni)
         
         if resultado[0]:
             return True, resultado[1]
         else:
             return False, resultado[1]
     
-    def _validar_datos(self, nombre: str, carrera: str, anio: str) -> bool:
-        return all([nombre and nombre.strip(), carrera and carrera.strip(), anio and anio.strip()])
+    def _validar_datos(self, dni, nombre, apellido, correo, telefono, ciudad) -> bool:
+        return all([dni and dni.strip(), nombre and nombre.strip(), apellido and apellido.strip(), correo and correo.strip(), telefono and telefono.strip(), ciudad and ciudad.strip()])
     
-    def _validar_anio(self, anio: str) -> bool:
+    def _validar_anio(self, dni) -> bool:
         try:
-            anio_int = int(anio)
-            return 1 <= anio_int <= 10  # Validar que el año sea razonable (1-10)
+            dni_int = int(dni)
+            return dni_int <= 100000000  # Validar que el dni sea razonable (1-10)
         except ValueError:
             return False
 
