@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Registros de Inasistencias</string>
   </property>
   <widget class="QTableWidget" name="tableInasistencias">
    <property name="geometry">

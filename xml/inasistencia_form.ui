@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Informar Inasistencias</string>
   </property>
   <widget class="QPlainTextEdit" name="cuadroTexto">
    <property name="geometry">

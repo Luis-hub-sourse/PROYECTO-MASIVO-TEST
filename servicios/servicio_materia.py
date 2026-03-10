@@ -13,6 +13,9 @@ class ServicioMateria:
     def buscar_materia(self, nombre: str):
         return self.repositorio.buscar_materia(nombre)
     
+    def buscar_materias(self):
+        return self.repositorio.buscar_materias()
+    
     def agregar_materia(self, nombre: str, carrera: str, anio: str):
         # Validar datos
         if not self._validar_datos(nombre, carrera, anio):

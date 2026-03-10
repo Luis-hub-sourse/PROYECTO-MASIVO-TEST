@@ -60,7 +60,7 @@ class VentanaInasistencia(QtWidgets.QDialog):
 
     def cargar_materias(self):
         try:
-            materias = self.servicio_materia.listar_materias()
+            materias = self.servicio_materia.buscar_materias()
             for materia in materias:
                 self.cbMateria.addItem(materia[1])
         except Exception as ex:
@@ -111,7 +111,7 @@ class VentanaRegsitroInasistencia(QtWidgets.QDialog):
 
     def cargar_materias(self):
         try:
-            materias = self.servicio_materia.listar_materias()
+            materias = self.servicio_materia.buscar_materias()
             for materia in materias:
                 self.cBoxMateria.addItem(materia[1])
         except Exception as ex:

@@ -40,17 +40,16 @@ class ServicioInasistencia:
                 fecha_reg
             )
             inasistencias_final.append(nuevo_registro)
-
         return inasistencias_final
     
     def obtener_materia_por_nombre(self, id_materia):
-        materias = self.servicio_materia.listar_materias()
+        materias = self.servicio_materia.buscar_materias()
         for materia in materias:
             if materia[1] == id_materia:
                 return materia[0], materia[1]
             
     def obtener_materia_por_id(self, id_materia):
-        materias = self.servicio_materia.listar_materias()
+        materias = self.servicio_materia.buscar_materias()
         for materia in materias:
             if materia[0] == id_materia:
                 return materia[0], materia[1]
@@ -60,15 +59,12 @@ class ServicioInasistencia:
         alumnos = self.servicio_alumno.listar_alumnos()
         correos = []
         
-        print(f"Debug alumnos: {alumnos}")
-        
         for alumno in alumnos:
             if len(alumno) > 3 and alumno[3]:
                 correo = str(alumno[3]).strip()
                 if '@' in correo:
                     correos.append(correo)
         
-        print(f"Correos finales: {correos}")
         return correos
 
     def verificar_datos(self, informe):

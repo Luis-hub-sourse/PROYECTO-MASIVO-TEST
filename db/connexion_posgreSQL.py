@@ -30,7 +30,6 @@ class ConexionDB:
             cursor = self.connection.cursor()
             cursor.execute(consulta, dato)
             muestra = cursor.fetchall()
-            print(muestra)
             self.connection.commit()
             return muestra
         except Exception as ex:

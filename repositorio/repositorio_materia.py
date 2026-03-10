@@ -23,6 +23,15 @@ class RepositorioMateria:
         conexion.close()
         return materia
     
+    def buscar_materias(self):
+        conexion = self.db.connect_to_db()
+        cursor = conexion.cursor()
+        cursor.execute("SELECT * FROM materias")
+        materias = cursor.fetchall()
+        cursor.close()
+        conexion.close()
+        return materias
+    
     def agregar_materia(self, materia):
         try:
             conexion = self.db.connect_to_db()
