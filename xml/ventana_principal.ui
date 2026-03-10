@@ -33,6 +33,7 @@
     <addaction name="actionAlumnos"/>
     <addaction name="actionMaterias"/>
     <addaction name="separator"/>
+    <addaction name="actionInasistencias"/>
     <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
@@ -85,6 +86,11 @@
   <action name="actionUsuarios_2">
    <property name="text">
     <string>Usuarios</string>
+   </property>
+  </action>
+  <action name="actionInasistencias">
+   <property name="text">
+    <string>Inasistencias</string>
    </property>
   </action>
  </widget>
