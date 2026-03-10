@@ -16,10 +16,10 @@ class ServicioProfesor:
         return self.repositorio.buscar_profesor(dni)
     
 
-    def agregar_profesor(self, dni: str, nombre: str, apellido: str, correo: str, telefono: str):
+    def agregar_profesor(self, dni: str, nombre: str, apellido: str, correo: str, telefono: str, ciudad: str):
 
         # Validar datos
-        if not self._validar_datos(dni, nombre, apellido, correo, telefono):
+        if not self._validar_datos(dni, nombre, apellido, correo, telefono, ciudad):
             return False, "Todos los campos son obligatorios"
         
         if not self._validar_dni(dni):
@@ -28,7 +28,7 @@ class ServicioProfesor:
         if not self._validar_correo(correo):
             return False, "El formato del correo electrónico no es válido"
         
-        profesor = Profesor(dni, nombre, apellido, correo, telefono)
+        profesor = Profesor(dni, nombre, apellido, correo, telefono, ciudad)
         exito, mensaje = self.repositorio.agregar_profesor(profesor)
         
         if exito:
@@ -37,16 +37,16 @@ class ServicioProfesor:
             return False, mensaje
     
 
-    def actualizar_profesor(self, dni: str, nombre: str, apellido: str, correo: str, telefono: str):
+    def actualizar_profesor(self, dni: str, nombre: str, apellido: str, correo: str, telefono: str, ciudad: str):
 
         # Validar datos
-        if not self._validar_datos(dni, nombre, apellido, correo, telefono):
+        if not self._validar_datos(dni, nombre, apellido, correo, telefono, ciudad):
             return False, "Todos los campos son obligatorios"
         
         if not self._validar_correo(correo):
             return False, "El formato del correo electrónico no es válido"
         
-        profesor = Profesor(dni, nombre, apellido, correo, telefono)
+        profesor = Profesor(dni, nombre, apellido, correo, telefono, ciudad)
         exito, mensaje = self.repositorio.actualizar_profesor(profesor)
         
         if exito:
@@ -68,12 +68,11 @@ class ServicioProfesor:
             return False, resultado[1]
     
 
-    def _validar_datos(self, dni: str, nombre: str, apellido: str, correo: str, telefono: str) -> bool:
+    def _validar_datos(self, dni: str, nombre: str, apellido: str, correo: str, telefono: str, ciudad: str) -> bool:
 
         return all([dni and dni.strip(), nombre and nombre.strip(), 
                    apellido and apellido.strip(), correo and correo.strip(), 
-                   telefono and telefono.strip()])
-    
+                   telefono and telefono.strip(), ciudad and ciudad.strip()])
 
     def _validar_dni(self, dni: str) -> bool:
 

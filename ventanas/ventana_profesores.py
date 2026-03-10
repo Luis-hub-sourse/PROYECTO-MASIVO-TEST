@@ -24,8 +24,16 @@ class VentanaProfesores(QtWidgets.QDialog):
         self.tlbProfesores.setColumnWidth(0, 100)  # DNI
         self.tlbProfesores.setColumnWidth(1, 150)  # Nombre
         self.tlbProfesores.setColumnWidth(2, 150)  # Apellido
-        self.tlbProfesores.setColumnWidth(3, 200)  # Correo
+        self.tlbProfesores.setColumnWidth(3, 250)  # Correo
         self.tlbProfesores.setColumnWidth(4, 120)  # Teléfono
+        self.tlbProfesores.setColumnWidth(5, 240)  # Ciudad
+
+        self.txtDNI.returnPressed.connect(self.txtNombre.setFocus)
+        self.txtNombre.returnPressed.connect(self.txtApellido.setFocus)
+        self.txtApellido.returnPressed.connect(self.txtCorreo.setFocus)
+        self.txtCorreo.returnPressed.connect(self.txtTelefono.setFocus)
+        self.txtTelefono.returnPressed.connect(self.txtCiudad.setFocus)
+        self.txtCiudad.returnPressed.connect(self.btnGuardar.click)
         
         # Cargar datos iniciales
         self.listar_profesores()
@@ -37,9 +45,10 @@ class VentanaProfesores(QtWidgets.QDialog):
         for row, profesor in enumerate(profesores):
             self.tlbProfesores.setItem(row, 0, QTableWidgetItem(str(profesor[0])))  # DNI
             self.tlbProfesores.setItem(row, 1, QTableWidgetItem(str(profesor[1])))  # Nombre
-            self.tlbProfesores.setItem(row, 2, QTableWidgetItem(str(profesor[2])))  # Apellido
+            self.tlbProfesores.setItem(row, 2, QTableWidgetItem(str(profesor[4])))  # Apellido
             self.tlbProfesores.setItem(row, 3, QTableWidgetItem(str(profesor[3])))  # Correo
-            self.tlbProfesores.setItem(row, 4, QTableWidgetItem(str(profesor[4])))  # Teléfono
+            self.tlbProfesores.setItem(row, 4, QTableWidgetItem(str(profesor[5])))  # Teléfono
+            self.tlbProfesores.setItem(row, 5, QTableWidgetItem(str(profesor[2])))  # Ciudad
     
     def agregar_profesor(self):
         self.limpiar_formulario()
@@ -58,11 +67,11 @@ class VentanaProfesores(QtWidgets.QDialog):
         if profesor:
             self.txtDNI.setText(str(profesor[0]))
             self.txtNombre.setText(str(profesor[1]))
-            self.txtApellido.setText(str(profesor[2]))
+            self.txtApellido.setText(str(profesor[4]))
             self.txtCorreo.setText(str(profesor[3]))
-            self.txtTelefono.setText(str(profesor[4]))
+            self.txtTelefono.setText(str(profesor[5]))
+            self.txtCiudad.setText(str(profesor[2]))
             
-            self.txtDNI.setEnabled(False)  # No permitir cambiar el DNI
             self.tabWidget.setCurrentIndex(1)
             self.profesor_editando = profesor[0]
     
@@ -98,16 +107,17 @@ class VentanaProfesores(QtWidgets.QDialog):
         apellido = self.txtApellido.text().strip()
         correo = self.txtCorreo.text().strip()
         telefono = self.txtTelefono.text().strip()
+        ciudad = self.txtCiudad.text().strip()
         
         if self.profesor_editando:
             # Modo edición
             exito, mensaje = self.servicio_profesor.actualizar_profesor(
-                dni, nombre, apellido, correo, telefono
+                dni, nombre, apellido, correo, telefono, ciudad
             )
         else:
             # Modo agregar
             exito, mensaje = self.servicio_profesor.agregar_profesor(
-                dni, nombre, apellido, correo, telefono
+                dni, nombre, apellido, correo, telefono, ciudad
             )
         
         if exito:
@@ -128,7 +138,7 @@ class VentanaProfesores(QtWidgets.QDialog):
         self.txtApellido.clear()
         self.txtCorreo.clear()
         self.txtTelefono.clear()
-        self.txtDNI.setEnabled(True)
+        self.txtCiudad.clear()
         self.profesor_editando = None
 
 

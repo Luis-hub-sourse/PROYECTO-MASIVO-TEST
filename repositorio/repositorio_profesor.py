@@ -34,9 +34,9 @@ class RepositorioProfesor:
             conexion = self.db.connect_to_db()
             cursor = conexion.cursor()
             cursor.execute("""
-                INSERT INTO profesores (dni, nombre, apellido, correo, telefono)
-                VALUES (%s, %s, %s, %s, %s)
-            """, (profesor.dni, profesor.nombre, profesor.apellido, profesor.correo, profesor.telefono))
+                INSERT INTO profesores (dni, nombre, ciudad, correo_electronico, apellido, telefono)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (profesor.dni, profesor.nombre, profesor.ciudad, profesor.correo, profesor.apellido, profesor.telefono))
             conexion.commit()
             cursor.close()
             conexion.close()
@@ -65,9 +65,9 @@ class RepositorioProfesor:
             cursor = conexion.cursor()
             cursor.execute("""
                 UPDATE profesores 
-                SET nombre = %s, apellido = %s, correo = %s, telefono = %s
+                SET nombre = %s, apellido = %s, correo_electronico = %s, telefono = %s, ciudad = %s
                 WHERE dni = %s
-            """, (profesor.nombre, profesor.apellido, profesor.correo, profesor.telefono, profesor.dni))
+            """, (profesor.nombre, profesor.apellido, profesor.correo, profesor.telefono, profesor.ciudad, profesor.dni))
             conexion.commit()
             actualizadas = cursor.rowcount
             cursor.close()

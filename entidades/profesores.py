@@ -1,8 +1,8 @@
 class Profesor:
-    def __init__(self, dni, nombre, ciudad, correo_electronico, apellido, telefono):
+    def __init__(self, dni, nombre, apellido, correo, telefono, ciudad):
         self.dni = dni
         self.nombre = nombre
         self.ciudad = ciudad
-        self.correo_electronico = correo_electronico
+        self.correo = correo
         self.apellido = apellido
         self.telefono = telefono
